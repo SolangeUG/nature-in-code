@@ -1,0 +1,22 @@
+# IntelliJ project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Eclipse project files
+.project
+.classpath
+libs/
+
+# Maven
+target/
+
+# Gradle
+.gradle
+out/
+build/
+
+# Binaries
+*.class
+bin/
