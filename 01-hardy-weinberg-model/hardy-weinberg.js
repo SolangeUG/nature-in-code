@@ -16,7 +16,7 @@ console.log("generation", 0, ":", a1a1, a2a2, a1a2);
 
 // calculating the Hardy-Weinberg model
 function calculate_hardy_weinberg_model() {
-	for (var i = 1; i <= 20; i++) {
+	for (let i = 1; i <= 20; i++) {
 		create_new_generation();
 		console.log("generation", i, ":", a1a1, a2a2, a1a2);
 	}
@@ -31,6 +31,6 @@ function create_new_generation() {
 
 // generic function to round numbers to n digits after the decimal point
 function generic_round_number(value, n) {
-	var shifter = Math.pow(10, n);
+	const shifter = Math.pow(10, n);
 	return Math.round(value * shifter) / shifter;
 }
