@@ -1,3 +1,5 @@
+import { generic_round_number } from 'helper';
+
 /*******************************************************************************
  * 									HARDY-WEINBERG MODEL						*
  ******************************************************************************/
@@ -27,10 +29,4 @@ function create_new_generation() {
 	a1a1 = generic_round_number(p * p, 2);
 	a2a2 = generic_round_number(q * q, 2);
 	a1a2 = 2 * generic_round_number(p * q, 2);
-}
-
-// generic function to round numbers to n digits after the decimal point
-function generic_round_number(value, n) {
-	const shifter = Math.pow(10, n);
-	return Math.round(value * shifter) / shifter;
 }
