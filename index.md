@@ -6,6 +6,10 @@
   - DNA
   - Genes
   - Four forces that lead to allele frequency change
+    - Natural Selection
+    - Genetic Drift
+    - Migration
+    - Mutation
 
 - Hardy-Weinberg Model
 
