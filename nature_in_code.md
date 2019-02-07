@@ -27,16 +27,46 @@ Let's consider a basic model of a gene declined into two alleles a<sub>1</sub> a
 
 For example, the human eye color is predominantly determined by two genes, `OCA2` and `HERC2`. Both genes come in two versions, the `C` and the `T` alleles. The combination of those two alleles is what will determine an individual's eye color. A person with two copies of the `C` allele will likely have blue eyes (72% probability). One with two copies of the `T` allele will likely have brown eyes (85% probability). And one with both alleles will have brown eyes with a 56% probability.
 
-Going back to our basic model, we'll consider the **Hardy-Weinberg allele frequencies** f(a<sub>1</sub>) and f(a<sub>2</sub>) to **not change** over time. And the resulting genotype frequencies - f(a<sub>1</sub>a<sub>1</sub>), f(a<sub>1</sub>a<sub>2</sub>) and f(a<sub>2</sub>a<sub>2</sub>) - may vary within one generation, and then stabilize and never change again over time.
+Going back to our basic model, we'll consider the **Hardy-Weinberg allele frequencies** f(a<sub>1</sub>) as `p` and f(a<sub>2</sub>) as `q` to **not change** over time. And the resulting genotype frequencies - f(a<sub>1</sub>a<sub>1</sub>), f(a<sub>1</sub>a<sub>2</sub>) and f(a<sub>2</sub>a<sub>2</sub>) - may vary within one generation, and then stabilize and never change again over time.
 
-In Javascript, we have:
+In Javascript, these Hardy-Weinberg frequencies are initialized as follows:
 
 ```Javascript
+// generation 0 genotype frequencies
+const a1a1 = 0.15;
+const a2a2 = 0.35;
+const a1a2 = 1 - (a1a1 + a2a2);
 
-
+// allele frequencies
+const p = a1a1 + (a1a2 / 2);
+const q = 1 - p;
 ```
 
+Calculating the Hardy-Weinberg model over 20 generations (for example):
 
+```Javascript
+function hardy_weinberg_model() {
+	for (let gen = 1; gen <= 20; i++) {
+		genotype_new_generation();
+		console.log("generation", i, ":", a1a1, a2a2, a1a2);
+	}
+}
+
+// calculating the next generation of genotype frequencies
+function genotype_new_generation() {
+	a1a1 = round(p * p, 2);
+	a2a2 = round(q * q, 2);
+	a1a2 = 2 * round(p * q, 2);
+}
+
+// round helper function
+function round(value, n) {
+	const shifter = Math.pow(10, n);
+	return Math.round(value * shifter) / shifter;
+}
+```
+
+When the simulation above is run, generation after generation, the Hardy-Weinberg genotype frequencies do not change as the allele frequencies remain constant.
 
 
 [1]: https://courses.edx.org/courses/course-v1:EPFLx+NiC1.0x+3T2016/course/
