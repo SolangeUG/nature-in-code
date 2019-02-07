@@ -1,4 +1,4 @@
-import { generic_round_number } from 'helper';
+import { round } from 'helper';
 
 /*******************************************************************************
  * 									HARDY-WEINBERG MODEL						*
@@ -17,16 +17,16 @@ const q = 1 - p;
 console.log("generation", 0, ":", a1a1, a2a2, a1a2);
 
 // calculating the Hardy-Weinberg model
-function calculate_hardy_weinberg_model() {
+function hardy_weinberg_model() {
 	for (let i = 1; i <= 20; i++) {
-		create_new_generation();
+		genotype_new_generation();
 		console.log("generation", i, ":", a1a1, a2a2, a1a2);
 	}
 }
 
 // calculating the next generation of genotype frequencies
-function create_new_generation() {
-	a1a1 = generic_round_number(p * p, 2);
-	a2a2 = generic_round_number(q * q, 2);
-	a1a2 = 2 * generic_round_number(p * q, 2);
+function genotype_new_generation() {
+	a1a1 = round(p * p, 2);
+	a2a2 = round(q * q, 2);
+	a1a2 = 2 * round(p * q, 2);
 }
