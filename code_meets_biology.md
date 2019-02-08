@@ -172,7 +172,11 @@ function get_offspring(parent1, parent2) {
 		}
 	}
 }
+```
 
+The intermediate helper functions are as simple as the following:
+
+```Javascript
 // are parents homozygous and identical
 function homozygous_identical(parent1, parent2) {
 	return (identical(parent1, parent2) && parent1 === "A1A1")
@@ -213,18 +217,36 @@ function homozygous_genotype(parent1, parent2) {
 }
 ```
 
+The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualization of how this model will evolve over time.
 
+```
+// TODO: embed simulation
+```
 
+## Epidemics
 
+[Nature in Code, Biology in Javascript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favorite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
 
+Following the same modelling process as before, the course defines preconditions for an epidemic to occur:
+- a susceptible population
+- and an infectious agent that affects hosts and _can_ get passed on to other susceptible hosts. However, all infectious agents do not necessarily cause illness in their hosts.
 
+Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] model. Initially, individuals are considered to be **susceptible** to an infectious disease. When exposed to an infectious agent, with a certain probability they get **infected**, and can in turn infect other susceptible individuals. Finally, under certain conditions (modelled here as a probability), they clear the infection and are considered **recovered**.
 
+These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
+```Javascript
+// TODO: embed simulation
+```
 
-
+Most importantly, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
 
 
 [1]: https://courses.edx.org/courses/course-v1:EPFLx+NiC1.0x+3T2016/course/
 [2]: https://www.yourgenome.org/facts/what-is-evolution
 [3]: https://ghr.nlm.nih.gov/primer/basics/gene
+[4]: https://github.com/SolangeUG/code-meets-biology/tree/master/02-migration-model
+[5]: https://d3js.org/
+[6]: https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model
+[7]: https://github.com/SolangeUG/code-meets-biology/tree/master/03-epidemics-model
