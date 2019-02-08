@@ -108,42 +108,77 @@ function get_bounded_index(index) {
  * @param parent2 is the mating partner
  * @return the offspring via the Mendelian Inheritance
  */
-function get_offspring(parent1, parent2) {
+ function get_offspring(parent1, parent2) {
+ 	let probability = 0;
 
-	var offspring = "";
-	var random_num = 0;
+ 	if (homozygous_identical(parent1, parent2)) {
+ 		return parent1;
+ 	}
 
-	if ((parent1 == "A1A1" && parent2 == "A1A1") || (parent1 == "A2A2" && parent2 == "A2A2")) {
-		offspring = parent1;
-	} else if ((parent1 == "A1A1" && parent2 == "A1A2") || (parent1 == "A1A2" && parent2 == "A1A1")) {
-		random_num = Math.random();
-		if (random_num < 0.5) {
-			offspring = "A1A1";
-		} else {
-			offspring = "A1A2";
-		}
-	} else if ((parent1 == "A1A1" && parent2 == "A2A2") || (parent1 == "A2A2" && parent2 == "A1A1")) {
-		offspring = "A1A2";
-	} else if (parent1 == "A1A2" && parent2 == "A1A2") {
-		random_num = Math.random();
-		if (random_num < 0.25) {
-			offspring = "A1A1";
-		} else if (random_num > 0.75) {
-			offspring = "A2A2";
-		} else {
-			offspring = "A1A2";
-		}
-	} else if ((parent1 == "A2A2" && parent2 == "A1A2") || (parent1 == "A1A2" && parent2 == "A2A2")) {
-		random_num = Math.random();
-		if (random_num < 0.5) {
-			offspring = "A2A2";
-		} else {
-			offspring = "A1A2";
-		}
-	}
+ 	if ((homozygous(parent1) && heterozygous(parent2))
+ 			|| (heterozygous(parent1) && homozygous(parent2)) {
+ 		probability = Math.random();
+ 		if (probability < 0.5) {
+ 			return homozygous_genotype(parent1, parent2);
+ 		} else {
+ 			return "A1A2";
+ 		}
+ 	}
 
-	return offspring;
-}
+ 	if (homozygous_non_identical(parent1, parent2)) {
+ 		return "A1A2";
+ 	}
+
+ 	if (heterozygous_identical(parent1, parent2)) {
+ 		probability = Math.random();
+ 		if (random_num < 0.25) {
+ 			return "A1A1";
+ 		} else if (random_num > 0.75) {
+ 			return "A2A2";
+ 		} else {
+ 			return "A1A2";
+ 		}
+ 	}
+ }
+
+ // are parents homozygous and identical
+ function homozygous_identical(parent1, parent2) {
+ 	return (identical(parent1, parent2) && parent1 === "A1A1")
+           || (identical(parent1, parent2) && parent1 === "A2A2");
+ }
+
+ // are parents homozygous but not identical
+ function homozygous_non_identical(parent1, parent2) {
+   const non_identical = ! identical(parent1, parent2);
+ 	return (non_identical && is_heterozygous(parent1))
+           || (non_identical && is_heterozygous(parent2));
+ }
+
+ // are both parents are heterozygous
+ function heterozygous_identical(parent1, parent2) {
+ 	return identical(parent1, parent2) && parent1 === "A1A2";
+ }
+
+ function homozygous(parent) {
+ 	return parent === "A1A1" || parent === "A2A2";
+ }
+
+ function heterozygous(parent) {
+ 	return parent === "A1A2";
+ }
+
+ // are parents of the same gynotype
+ function identical(parent1, parent2) {
+   return parent1 === parent2;
+ }
+
+ // return a homozygous genotype from a parent
+ function homozygous_genotype(parent1, parent2) {
+ 	if is_homozygous(parent1) {
+ 		return parent1;
+ 	}
+ 	return parent2;
+ }
 
 /**
  * Visualize the data computed so far
