@@ -5,7 +5,7 @@ A little over two years ago, a friend of mine decided to change careers and lear
 That had me thinking, and I set out to find a hands-on, and more enjoyable way for him to not only learn programming, but fall madly in love with it. In doing so, I came across a fantastic course for beginners on edX called [Nature in Code: Biology in Javascript][1]. This course shows how basic programming constructs can be used as a powerful tool to describe, understand and reason about our natural world.
 
 In this post, we'll talk about how the aforementioned course teaches scientific ideas such as evolution and epidemics using simple models.
-More specifically, we define a model as our starting point, then we'll look into how migration, one of main forces that lead to evolution is implemented. Finally, we'll look at how the spread of infectious diseases is represented in Javascipt.
+More specifically, we define a `null` model as our starting point, then we'll look into how migration, one of main forces that lead to evolution is implemented. Finally, building from the previous ideas, we'll briefly touch on how the spread of infectious diseases can be represented in code.
 
 ## The Hardy-Weinberg Model
 
@@ -33,9 +33,9 @@ In Javascript, these Hardy-Weinberg frequencies are initialized as follows:
 
 ```Javascript
 // generation 0 genotype frequencies
-const a1a1 = 0.15;
-const a2a2 = 0.35;
-const a1a2 = 1 - (a1a1 + a2a2);
+let a1a1 = 0.15;
+let a2a2 = 0.35;
+let a1a2 = 1 - (a1a1 + a2a2);
 
 // allele frequencies (constant over time)
 const p = a1a1 + (a1a2 / 2);
@@ -88,10 +88,10 @@ const grid = [];
 const max_mating_distance = 1;
 
 // generation 0 genotype frequencies
-const a1a1 = 0;
-const a1a2 = 0;
-const a2a2 = 0;
-const generation_counter = 0;
+let a1a1 = 0;
+let a1a2 = 0;
+let a2a2 = 0;
+let generation_counter = 0;
 ```
 
 Then, we randomly assign individuals in the grid:
@@ -119,8 +119,8 @@ function init_grid() {
 
 Once we have our population initialized, we look at what happens generation after generation. In other words:
 - each individual chooses a mating partner in accordance with the maximum mating distance defined earlier
-- then we generate the children given the parents' genotype
-- and finally, we replace the parent generation with the offspring generation.
+- then we generate the children given the parents' genotypes, and store them in a temporary grid
+- and finally, once we've run through all the individuals, we replace the parent generation with the offspring generation.
 
 ```Javascript
 function pick_mating_partner(position_i, position_j) {
@@ -132,16 +132,88 @@ function pick_mating_partner(position_i, position_j) {
 }
 ```
 
-In the above snippet of code, `get_bounded_index` refers to a function that wraps around the grid (when necessary), well as the `get_random` returns a random value between two given values.
+In the above snippet of code, `get_bounded_index` refers to a function that wraps around the grid (when necessary), and the `get_random` returns a random value between two given values.
 
 The function that generates the offspring once the parents' genotype is known can be broken down as follows:
 - when both parents are of the same genotype, then the offspring will be of the same genotype
 - when the first parent is homozygous (indentical alleles), and the other is heterozygous, a randomly generated probability determines which parent's genotype the child fully inherits from
-- when both parents are homozygous, but of different genotype, a randomly generated probability determines whether the child is homozygous or heterozygous.
+- when both parents are homozygous, but of different genotypes, a randomly generated probability determines whether the child is homozygous or heterozygous.
 
 ```Javascript
-//TODO: refactor the function and add it here
+function get_offspring(parent1, parent2) {
+	let probability = 0;
+
+	if (homozygous_identical(parent1, parent2)) {
+		return parent1;
+	}
+
+	if ((homozygous(parent1) && heterozygous(parent2))
+			|| (heterozygous(parent1) && homozygous(parent2)) {
+		probability = Math.random();
+		if (probability < 0.5) {
+			return homozygous_genotype(parent1, parent2);
+		} else {
+			return "A1A2";
+		}
+	}
+
+	if (homozygous_non_identical(parent1, parent2)) {
+		return "A1A2";
+	}
+
+	if (heterozygous_identical(parent1, parent2)) {
+		probability = Math.random();
+		if (random_num < 0.25) {
+			return "A1A1";
+		} else if (random_num > 0.75) {
+			return "A2A2";
+		} else {
+			return "A1A2";
+		}
+	}
+}
+
+// are parents homozygous and identical
+function homozygous_identical(parent1, parent2) {
+	return (identical(parent1, parent2) && parent1 === "A1A1")
+          || (identical(parent1, parent2) && parent1 === "A2A2");
+}
+
+// are parents homozygous but not identical
+function homozygous_non_identical(parent1, parent2) {
+  const non_identical = ! identical(parent1, parent2);
+	return (non_identical && is_heterozygous(parent1))
+          || (non_identical && is_heterozygous(parent2));
+}
+
+// are both parents are heterozygous
+function heterozygous_identical(parent1, parent2) {
+	return identical(parent1, parent2) && parent1 === "A1A2";
+}
+
+function homozygous(parent) {
+	return parent === "A1A1" || parent === "A2A2";
+}
+
+function heterozygous(parent) {
+	return parent === "A1A2";
+}
+
+// are parents of the same gynotype
+function identical(parent1, parent2) {
+  return parent1 === parent2;
+}
+
+// return a homozygous genotype from a parent
+function homozygous_genotype(parent1, parent2) {
+	if is_homozygous(parent1) {
+		return parent1;
+	}
+	return parent2;
+}
 ```
+
+
 
 
 
