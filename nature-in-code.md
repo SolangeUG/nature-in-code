@@ -1,19 +1,17 @@
 # Nature in Code
 
-A little over two years ago, a friend of mine decided to change careers and learn programming. Despite our long conversations about how software development and information technology in general have had a tremendous and transformative impact on our societies, he still struggled to find any passion for his new endeavour. He thought of programming as being too abstract.
-
-That had me thinking, and I set out to find a hands-on, and more enjoyable way for him to not only learn programming, but fall madly in love with it. In doing so, I came across a fantastic course for beginners on edX called [Nature in Code: Biology in Javascript][1]. This course shows how basic programming constructs can be used as a powerful tool to describe, understand and reason about our natural world.
+A little over two years ago, a friend of mine decided to change careers and learn programming. After just a few months into it, he  confessed to struggling with it, because he had trouble finding any pleasure learning to code. He thought of programming as being way too abstract. As that was not the first time I'd heard someone mention that programming was too abstract - just like mathematics, I set out to find a hands-on, and more enjoyable way for him to not only learn programming, but fall madly in love with it. In doing so, I came across a fantastic course for beginners on edX called [Nature in Code: Biology in Javascript][1]. This course shows how basic programming constructs can be used as a powerful tool to describe, understand and reason about our natural world.
 
 In this post, we'll talk about how the aforementioned course teaches scientific ideas such as evolution and epidemics using simple models.
-More specifically, we define a `null` model as our starting point, then we'll look into how migration, one of main forces that lead to evolution is implemented. Finally, building from the previous ideas, we'll briefly touch on how the spread of infectious diseases can be represented in code.
+More specifically, we define a `null` model as our starting point, then we look into how mutation and migration (two of the main forces that lead to evolution) are implemented. Finally, building from the previous ideas, we will briefly touch on how the spread of infectious diseases can be represented in code.
 
 ## The Hardy-Weinberg Model
 
 In biology, **evolution** is the change in genetic composition of a population over time. The course identifies four forces that lead to this change:
-  - **Natural selection**, as described by Charles Darwin, where <cite>individuals with characteristics best suited to their environment are more likely to survive, reproduce and pass their genes onto their children</cite>.[<sup>1</sup>][2]
-  - **Genetic drift**, where the change in genetic composition is due to random chance.
-  - **Migration**, which refers to population moving from one place to another.
-  - **Mutation**, which is described as the *ultimate engine of diversity creation*.
+  - **natural selection**, as described by Charles Darwin, where <cite>individuals with characteristics best suited to their environment are more likely to survive, reproduce and pass their genes onto their children</cite>[<sup>1</sup>][2]
+  - **genetic drift**, where the change in genetic composition is due to random chance
+  - **migration**, which refers to population moving from one place to another
+  - **mutation**, which is described as the *ultimate engine of diversity creation*.
 
 The course introduces the **Hardy-Weinberg Model** - also known as the `null` model, as being the model that describes how a system would behave without any of the forces of interest.
 
@@ -25,11 +23,11 @@ It relies on the following simplifying assumptions:
 
 Let's consider a basic model of a gene declined into two alleles a<sub>1</sub> and a<sub>2</sub>. A **gene** is defined as <cite>the basic physical and functional unit of heredity</cite>.[<sup>2</sup>][3] Every gene exists in multiple versions, called **alleles**, and these versions are the ones that make us unique.
 
-For example, the human eye color is predominantly determined by two genes, `OCA2` and `HERC2`. This last gene comes in two versions, the `C` and the `T` alleles. The combination of those two alleles is what will (mostly) determine an individual's eye color. A person with two copies of the `C` allele will likely have blue eyes (72% probability). One with two copies of the `T` allele will likely have brown eyes (85% probability). And one with both alleles will have brown eyes with a 56% probability.
+For example, the human eye colour is predominantly determined by two genes, `OCA2` and `HERC2`. This last gene comes in two versions, the `C` and the `T` alleles. The combination of those two alleles is what will (mostly) determine an individual's eye color. A person with two copies of the `C` allele will likely have blue eyes (72% probability). One with two copies of the `T` allele will likely have brown eyes (85% probability). And one with both alleles will have brown eyes with a 56% probability.
 
-Going back to our basic model, we'll consider the **Hardy-Weinberg allele frequencies** f(a<sub>1</sub>) as `p` and f(a<sub>2</sub>) as `q` to **not change** over time. And the resulting genotype frequencies - f(a<sub>1</sub>a<sub>1</sub>), f(a<sub>1</sub>a<sub>2</sub>) and f(a<sub>2</sub>a<sub>2</sub>) - may vary within one generation, and then stabilize and never change again over time.
+Going back to our basic model, we'll consider the **Hardy-Weinberg allele frequencies** f(a<sub>1</sub>) as `p` and f(a<sub>2</sub>) as `q` to **not change** over time. And the resulting genotype frequencies - f(a<sub>1</sub>a<sub>1</sub>), f(a<sub>1</sub>a<sub>2</sub>) and f(a<sub>2</sub>a<sub>2</sub>) - may vary within one generation, and then stabilise and never change again over time.
 
-In Javascript, these Hardy-Weinberg frequencies are initialized as follows:
+In Javascript, these Hardy-Weinberg frequencies are initialised as follows:
 
 ```Javascript
 // generation 0 genotype frequencies
@@ -68,20 +66,24 @@ function round(value, n) {
 
 When the simulation above is run, generation after generation, the Hardy-Weinberg genotype frequencies do not change as the allele frequencies remain constant.
 
+## Mutation
+
+// TODO
+
 ## Migration
 
 In studying migration, we build from the Hardy-Weinberg model, considering diploid individuals (having two copies of genetic material), but relax two of our previous simplifying assumptions.
 - First, we no longer consider to have an infinite population size.
 - Second, we are no longer assuming random sexual reproduction. Instead, we consider where individuals are in space. So, when mating, it's much more likely that an individual will choose a close-by partner, rather than an individual who is far away.
 
-Relaxing these two assumptions gives a **spatial model**.
+Relaxing these two assumptions gives us a **spatial model**.
 
 We represent such a model with a finite grid, where each cell contains an individual. And we add a rule about mating distance: for each individual in the grid, we define a **maximum mating distance**. For example, if we set such a distance to 1, an individual in the middle of the grid will have eight possibilities in choosing a partner.
 
-When implementing this model, we start with allele frequencies, and grid initialization, and we set our maximum mating distance to 1.
+When implementing this model, we start with allele frequencies, and grid initialisation, and we set our maximum mating distance to 1.
 
 ```Javascript
-// spatial model initialization
+// spatial model initialisation
 const grid_length = 100;
 const p = 0.5; // p is allele a1 frequency
 const grid = [];
@@ -117,33 +119,33 @@ function init_grid() {
 }
 ```
 
-Once we have our population initialized, we look at what happens generation after generation. In other words:
+Once we have our population initialised, we look at what happens generation after generation. In other words:
 - each individual chooses a mating partner in accordance with the maximum mating distance defined earlier
 - then we generate the children given the parents' genotypes, and store them in a temporary grid
 - and finally, once we've run through all the individuals, we replace the parent generation with the offspring generation.
 
 ```Javascript
 function pick_mating_partner(position_i, position_j) {
-  let x = get_random(position_i - max_mating_distance, position_i + max_mating_distance);
-  let y = get_random(position_j - max_mating_distance, position_j + max_mating_distance);
-  x = get_bounded_index(x);
-  y = get_bounded_index(y);
+  let x = random_value_between(position_i - max_mating_distance, position_i + max_mating_distance);
+  let y = random_value_between(position_j - max_mating_distance, position_j + max_mating_distance);
+  x = bounded_index(x);
+  y = bounded_index(y);
   return grid[x][y];
 }
 ```
 
-In the above snippet of code, `get_bounded_index` refers to a function that wraps around the grid (when necessary), and the `get_random` returns a random value between two given values.
+In the above snippet of code, `bounded_index` refers to a function that wraps around the grid (when necessary), and the `random_value_between` returns a random value between two given values.
 
 The function that generates the offspring once the parents' genotype is known can be broken down as follows:
-- when both parents are of the same genotype, then the offspring will be of the same genotype
-- when the first parent is homozygous (indentical alleles), and the other is heterozygous, a randomly generated probability determines which parent's genotype the child fully inherits from
+- when both parents are of the same genotype, then, as one would expect, the offspring will be of the same genotype
+- when the first parent is homozygous (identical alleles), and the other is heterozygous, a randomly generated probability determines which parent's genotype the child fully inherits from
 - when both parents are homozygous, but of different genotypes, a randomly generated probability determines whether the child is homozygous or heterozygous.
 
 ```Javascript
 function get_offspring(parent1, parent2) {
 	let probability = 0;
 
-	if (homozygous_identical(parent1, parent2)) {
+	if (homozygous_and_identical(parent1, parent2)) {
 		return parent1;
 	}
 
@@ -151,7 +153,7 @@ function get_offspring(parent1, parent2) {
 			|| (heterozygous(parent1) && homozygous(parent2)) {
 		probability = Math.random();
 		if (probability < 0.5) {
-			return homozygous_genotype(parent1, parent2);
+			return homozygous_genotype_from(parent1, parent2);
 		} else {
 			return "A1A2";
 		}
@@ -161,7 +163,7 @@ function get_offspring(parent1, parent2) {
 		return "A1A2";
 	}
 
-	if (heterozygous_identical(parent1, parent2)) {
+	if (heterozygous_and_identical(parent1, parent2)) {
 		probability = Math.random();
 		if (random_num < 0.25) {
 			return "A1A1";
@@ -178,7 +180,7 @@ The intermediate helper functions are as simple as the following:
 
 ```Javascript
 // are parents homozygous and identical
-function homozygous_identical(parent1, parent2) {
+function homozygous_and_identical(parent1, parent2) {
 	return (identical(parent1, parent2) && parent1 === "A1A1")
           || (identical(parent1, parent2) && parent1 === "A2A2");
 }
@@ -190,8 +192,8 @@ function homozygous_non_identical(parent1, parent2) {
           || (non_identical && is_heterozygous(parent2));
 }
 
-// are both parents are heterozygous
-function heterozygous_identical(parent1, parent2) {
+// are both parents heterozygous
+function heterozygous_and_identical(parent1, parent2) {
 	return identical(parent1, parent2) && parent1 === "A1A2";
 }
 
@@ -203,21 +205,21 @@ function heterozygous(parent) {
 	return parent === "A1A2";
 }
 
-// are parents of the same gynotype
+// are parents of the same genotype
 function identical(parent1, parent2) {
   return parent1 === parent2;
 }
 
 // return a homozygous genotype from a parent
-function homozygous_genotype(parent1, parent2) {
-	if is_homozygous(parent1) {
+function homozygous_genotype_from(parent1, parent2) {
+	if (homozygous(parent1)) {
 		return parent1;
 	}
 	return parent2;
 }
 ```
 
-The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualization of how this model will evolve over time.
+The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
 ```
 // TODO: embed simulation
@@ -225,7 +227,7 @@ The complete code for generating the **migration** spatial model and running a s
 
 ## Epidemics
 
-[Nature in Code, Biology in Javascript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favorite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
+[Nature in Code, Biology in Javascript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favourite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
 
 Following the same modelling process as before, the course defines preconditions for an epidemic to occur:
 - a susceptible population
@@ -239,7 +241,7 @@ These three stages of evolution can be implemented in [code][7] following the sa
 // TODO: embed simulation
 ```
 
-Most importantly, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
+Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
 
 
