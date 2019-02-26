@@ -1,4 +1,4 @@
-# Code Meets Biology
+# Nature in Code
 
 A little over two years ago, a friend of mine decided to change careers and learn programming. Despite our long conversations about how software development and information technology in general have had a tremendous and transformative impact on our societies, he still struggled to find any passion for his new endeavour. He thought of programming as being too abstract.
 
