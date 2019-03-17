@@ -1,9 +1,8 @@
 # Nature in Code
 
-A little over two years ago, a friend of mine decided to change careers and learn programming. After just a few months into it, he  confessed to struggling with it, because he had trouble finding any pleasure learning to code. He thought of programming as being way too abstract. As that was not the first time I'd heard someone mention that programming was too abstract - just like mathematics, I set out to find a hands-on, and more enjoyable way for him to not only learn programming, but fall madly in love with it. In doing so, I came across a fantastic course for beginners on edX called [Nature in Code: Biology in Javascript][1]. This course shows how basic programming constructs can be used as a powerful tool to describe, understand and reason about our natural world.
+A little over two years ago, while exploring the edX platform for online courses, I came across a fantastic one about programming for beginners called [Nature in Code: Biology in JavaScript][1]. This course shows how basic programming constructs can be used as a powerful tool to describe, understand and reason about our natural world.
 
-In this post, we'll talk about how the aforementioned course teaches scientific ideas such as evolution and epidemics using simple models.
-More specifically, we define a `null` model as our starting point, then we look into how mutation and migration (two of the main forces that lead to evolution) are implemented. Finally, building from the previous ideas, we will briefly touch on how the spread of infectious diseases can be represented in code.
+In this post, we'll at how the aforementioned course teaches and translates scientific ideas such as evolution and epidemics, using simple models, into code. As a starting point, we define a `null` model, then we look into how mutation and migration (two of the main forces that lead to evolution) are implemented. And then, building from the previous ideas, we will briefly touch on how the spread of infectious diseases can be represented in code.
 
 ## The Hardy-Weinberg Model
 
@@ -27,9 +26,9 @@ For example, the human eye colour is predominantly determined by two genes, `OCA
 
 Going back to our basic model, we'll consider the **Hardy-Weinberg allele frequencies** f(a<sub>1</sub>) as `p` and f(a<sub>2</sub>) as `q` to **not change** over time. And the resulting genotype frequencies - f(a<sub>1</sub>a<sub>1</sub>), f(a<sub>1</sub>a<sub>2</sub>) and f(a<sub>2</sub>a<sub>2</sub>) - may vary within one generation, and then stabilise and never change again over time.
 
-In Javascript, these Hardy-Weinberg frequencies are initialised as follows:
+In JavaScript, these Hardy-Weinberg frequencies are initialised as follows:
 
-```Javascript
+```javascript
 // generation 0 genotype frequencies
 let a1a1 = 0.15;
 let a2a2 = 0.35;
@@ -42,16 +41,16 @@ const q = 1 - p;
 
 Calculating the Hardy-Weinberg model over 20 generations (for example):
 
-```Javascript
+```javascript
 function hardy_weinberg_model() {
 	for (let gen = 1; gen <= 20; gen++) {
-		genotype_new_generation();
+		next_genotype_generation();
 		console.log("generation", gen, ":", a1a1, a2a2, a1a2);
 	}
 }
 
 // calculating the next generation of genotype frequencies
-function genotype_new_generation() {
+function next_genotype_generation() {
 	a1a1 = round(p * p, 2);
 	a2a2 = round(q * q, 2);
 	a1a2 = 2 * round(p * q, 2);
@@ -66,11 +65,15 @@ function round(value, n) {
 
 When the simulation above is run, generation after generation, the Hardy-Weinberg genotype frequencies do not change as the allele frequencies remain constant.
 
-## Mutation
+## Mutation: The Power Of Mistakes
 
-Mutation is the change in genetic sequence, and is the main cause of diversity among organisms.
+Mutation is the change in genetic sequence, and is the main cause of diversity among organisms. It generally happens during *cell replication*, which is the process during which a given cell will produce two identical replicas of its own DNA. It is during this process that a small change - a **small error** - might occur leading to mutation in one of the new cells. Although this (kind of) mistake is very rare, it manifest itself as **random** mutation.
 
-## Migration
+To implement this idea in JavaScript, as the DNA molecule is formed of four bases - adenine, guanine, cytosine, and thymine - we use an array to store a DNA sequence as a sequence of the four bases. For example, for an individual, we'll represent their DNA sequence as `[A, G, C, C, A, T]`. Then, we represent a whole population as a two-dimensional array of similar sequences.
+
+
+
+## Migration: Spatial Models
 
 In studying migration, we build from the Hardy-Weinberg model, considering diploid individuals (having two copies of genetic material), but relax two of our previous simplifying assumptions.
 - First, we no longer consider to have an infinite population size.
@@ -82,7 +85,7 @@ We represent such a model with a finite grid, where each cell contains an indivi
 
 When implementing this model, we start with allele frequencies, and grid initialisation, and we set our maximum mating distance to 1.
 
-```Javascript
+```javascript
 // spatial model initialisation
 const grid_length = 100;
 const p = 0.5; // p is allele a1 frequency
@@ -98,7 +101,7 @@ let generation_counter = 0;
 
 Then, we randomly assign individuals in the grid:
 
-```Javascript
+```javascript
 function init_grid() {
 	for (let i = 0; i < grid_length; i++) {
 		grid[i] = [];
@@ -124,7 +127,7 @@ Once we have our population initialised, we look at what happens generation afte
 - then we generate the children given the parents' genotypes, and store them in a temporary grid
 - and finally, once we've run through all the individuals, we replace the parent generation with the offspring generation.
 
-```Javascript
+```javascript
 function pick_mating_partner(position_i, position_j) {
   let x = random_value_between(position_i - max_mating_distance, position_i + max_mating_distance);
   let y = random_value_between(position_j - max_mating_distance, position_j + max_mating_distance);
@@ -141,7 +144,7 @@ The function that generates the offspring once the parents' genotype is known ca
 - when the first parent is homozygous (identical alleles), and the other is heterozygous, a randomly generated probability determines which parent's genotype the child fully inherits from
 - when both parents are homozygous, but of different genotypes, a randomly generated probability determines whether the child is homozygous or heterozygous.
 
-```Javascript
+```javascript
 function get_offspring(parent1, parent2) {
 	let probability = 0;
 
@@ -178,7 +181,7 @@ function get_offspring(parent1, parent2) {
 
 The intermediate helper functions are as simple as the following:
 
-```Javascript
+```javascript
 // are parents homozygous and identical
 function homozygous_and_identical(parent1, parent2) {
 	return (identical(parent1, parent2) && parent1 === "A1A1")
@@ -221,13 +224,13 @@ function homozygous_genotype_from(parent1, parent2) {
 
 The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
-```
+```javascript
 // TODO: embed simulation
 ```
 
-## Epidemics
+## Epidemics: The Spread of Infectious Diseases
 
-[Nature in Code, Biology in Javascript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favourite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
+[Nature in Code, Biology in JavaScript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favourite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
 
 Following the same modelling process as before, the course defines preconditions for an epidemic to occur:
 - a susceptible population
@@ -237,7 +240,7 @@ Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] mode
 
 These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
-```Javascript
+```javascript
 // TODO: embed simulation
 ```
 
@@ -248,7 +251,7 @@ Finally, in implementing recovery, we discover under which conditions an infecti
 [1]: https://courses.edx.org/courses/course-v1:EPFLx+NiC1.0x+3T2016/course/
 [2]: https://www.yourgenome.org/facts/what-is-evolution
 [3]: https://ghr.nlm.nih.gov/primer/basics/gene
-[4]: https://github.com/SolangeUG/code-meets-biology/tree/master/02-migration-model
+[4]: https://github.com/SolangeUG/nature-in-code/tree/master/02-migration-model
 [5]: https://d3js.org/
 [6]: https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model
-[7]: https://github.com/SolangeUG/code-meets-biology/tree/master/03-epidemics-model
+[7]: https://github.com/SolangeUG/nature-in-code/tree/master/04-epidemics-model
