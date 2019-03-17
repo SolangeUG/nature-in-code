@@ -20,3 +20,6 @@ build/
 # Binaries
 *.class
 bin/
+
+# Other
+.DS_Store
