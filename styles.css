@@ -1,0 +1,59 @@
+body {
+    margin: 2rem;
+    font-family: Kalam, sans-serif;
+}
+
+.nature-in-code {
+    margin: 2rem;
+}
+
+.legend {
+    margin-bottom: 1rem;
+}
+
+.box {
+    display: inline-block;
+    margin-left: 0.1rem;
+    min-width: 4rem;
+    min-height: 0.5rem;
+}
+
+.a1a1 {
+    background: #F4F6F6;
+}
+
+.a1a2 {
+    background: #FFCC33;
+}
+
+.a2a2 {
+    background: #DD4D00;
+}
+
+.susceptible {
+    background: #DCDCDC;
+}
+
+.infected {
+    background: #A62250;
+}
+
+.recovered {
+    background: #175466;
+}
+
+.simulation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reload {
+    padding: 0.4rem;
+    margin-bottom: 0.2rem;
+    border-radius: 4px;
+    background: #008CBA;
+    border-color: #008CBA;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+}
