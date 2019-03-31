@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport"
-        	  content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    	<meta http-equiv="X-UA-compatible" content="IE=edge">
-		<title>Code Meets Biology | Migration Model</title>
-  	<style type="text/css">
-  		body {
-  			margin: 40px;
-  			font-family: "Segoe UI";
-  		}
-  	</style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+
     <!-- D3.js library is imported for data visualization -->
     <script src="https://d3js.org/d3.v4.min.js"
-    		charset="utf-8">
-		</script>
-	</head>
-
-	<body>
-		<header>
-		</header>
-		<main>
-			Migration: Spatial Models!
-			<p></p>
-		</main>
-		<!--
-			The draw_line_chart function makes use of the D3.js library and it was copied from
- 			http://www.natureincode.com/code/various/draw_line_chart.html
-			For the visualizations to work, this script that contains the draw_line_chart has to be
-			embedded inside the body tags.
-		-->
-    <script type="text/javascript"
-    		src="migration.js">
+            charset="utf-8">
     </script>
-	</body>
+
+    <title>Nature In Code | Migration</title>
+  </head>
+  <body>
+    <main class="nature-in-code">
+      <h3>Migration - Spatial Models</h3>
+      <div class="legend">
+        <div><div class="box a1a1"></div> A1A1 genotype</div>
+        <div><div class="box a1a2"></div> A1A2 genotype</div>
+        <div><div class="box a2a2"></div> A2A2 genotype</div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="../utilities.js"></script>
+    <script type="text/javascript" src="../draw.js"></script>
+    <script type="text/javascript" src="migration.js"></script>
+  </body>
 </html>
