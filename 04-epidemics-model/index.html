@@ -1,48 +1,39 @@
 <!DOCTYPE html>
-
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport"
-          	  content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    	<meta http-equiv="X-UA-compatible" content="IE=edge">
-		<title>Nature, In Code | Epidemics</title>
-		<link rel="shortcut icon"
-          	  href="https://leanpub.com/assets/favicons/favicon-16x16-ded2bd99e406de33cbbc8ce1cdee589d.png"
-          	  type="image/vnd.microsoft.icon">
-  	  	<style type="text/css">
-  	  		body {
-  	  			margin: 40px;
-  	  			font-family: "Segoe UI";
-  	  		}
-  	  	</style>
-        <!-- D3.js library is imported for data visualization -->  	 
-        <script src="https://d3js.org/d3.v4.min.js"
-        		charset="utf-8">
-		</script>
-	</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
 
-	<body>
-		<header>
+    <!-- D3.js library is imported for data visualization -->
+    <script src="https://d3js.org/d3.v4.min.js"
+            charset="utf-8">
+    </script>
 
-		</header>
-		<main>
-			Epidemics : The Spread of Infectious Diseases
-			<p></p>
-		</main>
-		<!-- 
-			The draw_line_chart function makes use of the D3.js library and it was copied from 
- 			http://www.natureincode.com/code/various/draw_line_chart.html 
-			For the visualizations to work, this script that contains the draw_line_chart has to be 
-			embedded inside the body tags.
-		-->
-		<!-- 
-        <script type="text/javascript"
-        		src="natural-selection.js">        	
-        </script>
-    	-->
-        <script type="text/javascript"
-        		src="epidemics.js">        	
-        </script>
-	</body>
+    <title>Nature In Code | Epidemics</title>
+  </head>
+  <body>
+    <main class="nature-in-code">
+      <h3>Epidemics, The Spread of Infectious Diseases!</h3>
+      <div>
+        In the following SIR simulation the infection probability is set to 5%, while the recovery probability is of 10%.
+      </div>
+      <div class="simulation">
+        <div class="legend">
+          <div><div class="box susceptible"></div> Susceptible</div>
+          <div><div class="box infected"></div> Infected</div>
+          <div><div class="box recovered"></div> Recovered</div>
+        </div>
+        <div>
+          <button class="reload" onclick="rerun_simulation()">Rerun simulation</button>
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="../utilities.js"></script>
+    <script type="text/javascript" src="../draw.js"></script>
+    <script type="text/javascript" src="epidemics.js"></script>
+  </body>
 </html>
