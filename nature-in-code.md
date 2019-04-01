@@ -300,17 +300,10 @@ function homozygous_genotype_from(parent1, parent2) {
 
 The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="Migration Model" src="//codepen.io/SolangeUG/embed/preview/axbYVm/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="800" style="width: 100%;" scrolling="no" title="Migration Model" src="//codepen.io/SolangeUG/embed/preview/axbYVm/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/SolangeUG/pen/axbYVm/'>Migration Model</a> by Solange Gasengayire Umuhire
   (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-<p class="codepen" data-height="265" data-theme-id="0" data-default-tab="result" data-user="SolangeUG" data-slug-hash="axbYVm" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Migration Model">
-  <span>See the Pen <a href="https://codepen.io/SolangeUG/pen/axbYVm/">
-  Migration Model</a> by Solange Gasengayire Umuhire (<a href="https://codepen.io/SolangeUG">@SolangeUG</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## Epidemics: The Spread of Infectious Diseases
 
@@ -324,17 +317,10 @@ Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] mode
 
 These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="Epidemics Model" src="//codepen.io/SolangeUG/embed/preview/zXYWJo/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="860" style="width: 100%;" scrolling="no" title="Epidemics Model" src="//codepen.io/SolangeUG/embed/preview/zXYWJo/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/SolangeUG/pen/zXYWJo/'>Epidemics Model</a> by Solange Gasengayire Umuhire
   (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-<p class="codepen" data-height="265" data-theme-id="0" data-default-tab="result" data-user="SolangeUG" data-slug-hash="zXYWJo" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Epidemics Model">
-  <span>See the Pen <a href="https://codepen.io/SolangeUG/pen/zXYWJo/">
-  Epidemics Model</a> by Solange Gasengayire Umuhire (<a href="https://codepen.io/SolangeUG">@SolangeUG</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
