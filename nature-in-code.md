@@ -305,6 +305,13 @@ The complete code for generating the **migration** spatial model and running a s
   (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+<p class="codepen" data-height="265" data-theme-id="0" data-default-tab="result" data-user="SolangeUG" data-slug-hash="axbYVm" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Migration Model">
+  <span>See the Pen <a href="https://codepen.io/SolangeUG/pen/axbYVm/">
+  Migration Model</a> by Solange Gasengayire Umuhire (<a href="https://codepen.io/SolangeUG">@SolangeUG</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 ## Epidemics: The Spread of Infectious Diseases
 
 [Nature in Code, Biology in JavaScript][1] concludes the course by looking into how infectious diseases spread in a population. And this last chapter is my favourite of the entire course as it shows how programming (and software in general) can be used as a powerful tool to understand and find solutions to real world problems such as those caused by infectious diseases.
@@ -321,6 +328,13 @@ These three stages of evolution can be implemented in [code][7] following the sa
   See the Pen <a href='https://codepen.io/SolangeUG/pen/zXYWJo/'>Epidemics Model</a> by Solange Gasengayire Umuhire
   (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+<p class="codepen" data-height="265" data-theme-id="0" data-default-tab="result" data-user="SolangeUG" data-slug-hash="zXYWJo" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Epidemics Model">
+  <span>See the Pen <a href="https://codepen.io/SolangeUG/pen/zXYWJo/">
+  Epidemics Model</a> by Solange Gasengayire Umuhire (<a href="https://codepen.io/SolangeUG">@SolangeUG</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
