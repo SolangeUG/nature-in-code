@@ -144,7 +144,7 @@ function run_generations() {
 
 A log of the results to the console looks like this:
 
-![Mutation in JavaScript][mutation]
+<img src="https://github.com/SolangeUG/nature-in-code/blob/master/02-mutation-model/mutation.png" width="400" height="400" alt="Migration model results"/>
 
 So, even a very low mutation probability will result in a significant increase in diversity over time.
 
@@ -329,8 +329,7 @@ Finally, in implementing recovery, we discover under which conditions an infecti
 [1]: https://courses.edx.org/courses/course-v1:EPFLx+NiC1.0x+3T2016/course/
 [2]: https://www.yourgenome.org/facts/what-is-evolution
 [3]: https://ghr.nlm.nih.gov/primer/basics/gene
-[4]: https://github.com/SolangeUG/nature-in-code/tree/master/02-migration-model
+[4]: https://github.com/SolangeUG/nature-in-code/tree/master/03-migration-model
 [5]: https://d3js.org/
 [6]: https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model
 [7]: https://github.com/SolangeUG/nature-in-code/tree/master/04-epidemics-model
-[mutation]: mutation.png "Mutation in JavaScript"
