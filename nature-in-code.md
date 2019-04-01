@@ -69,8 +69,84 @@ When the simulation above is run, generation after generation, the Hardy-Weinber
 
 Mutation is the change in genetic sequence, and is the main cause of diversity among organisms. It generally happens during *cell replication*, which is the process during which a given cell will produce two identical replicas of its own DNA. It is during this process that a small change - a **small error** - might occur leading to mutation in one of the new cells. Although this (kind of) mistake is very rare, it manifest itself as **random** mutation.
 
-To implement this idea in JavaScript, as the DNA molecule is formed of four bases - adenine, guanine, cytosine, and thymine - we use an array to store a DNA sequence as a sequence of the four bases. For example, for an individual, we'll represent their DNA sequence as `[A, G, C, C, A, T]`. Then, we represent a whole population as a two-dimensional array of similar sequences.
+To implement this idea in JavaScript, as the DNA molecule is formed of four bases - adenine, guanine, cytosine, and thymine - we use an array to store a DNA sequence as a sequence of the four bases. For example, for an individual, we'll represent their DNA sequence as `[A, G, C, C, A, T]`. Then, we represent a whole population as a two-dimensional array of similar sequences. As we'll be looking into changes in population over time, this leads to a 3D array where the third dimension is time.
 
+Assuming we start with an identical population, our first generation (before mutation) can therefore be calculated as follows:
+
+```javascript
+const BASES = ['A', 'G', 'C', 'T'];
+const number_of_sequences = 100;
+let sequences = []; //population array
+let original_sequence = [];
+
+function first_generation() {
+  first_sequence();
+  for (let i = 0; i < number_of_sequences; i++) {
+    sequences.push(original_sequence.slice());
+  }
+}
+```
+where `first_sequence()` is a function that generates the original sequence, and we copy this sequence a hundred times.
+
+```javascript
+const sequence_length = 20;
+/**
+ * Generate original sequence
+ */
+function first_sequence() {
+  for (let i = 0; i < sequence_length; i++) {
+    original_sequence.push(random_base(""));
+  }
+}
+
+/**
+ * Generate a random choice from the four DNA bases characters
+ * @param current_base
+ * @returns different base character
+ */
+function random_base(current_base) {
+  let index;
+  let new_base;
+
+  do {
+    index = Math.floor(Math.random() * 4);
+    new_base = BASES[index];
+  } while (new_base === current_base);
+
+  return new_base;
+}
+```
+
+Now that we have a first generation, **mutation** will be expressed as a _random_ phenomenon over time, with a very low mutation probability of `1/10000` to translate its rarity. Running this simulation over a hundred generations, we get:
+
+```javascript
+const mutation_rate = 0.0001; // per base and generation
+const number_of_generations = 100;
+
+/**
+ * Mutation Model
+ */
+function run_generations() {
+  for (let i = 0; i < number_of_generations; i++) {
+    // for each generation | current generation is i
+    for (let j = 0; j < sequences.length; j++) {
+      // for each sequence | current sequence is sequences[j]
+      for (let k = 0; k < sequences[j].length; k++) {
+        // for each base | current base is sequences[j][k]
+        if (Math.random() < mutation_rate) {
+          sequences[j][k] = random_base(sequences[j][k]);
+        }
+      }
+    }
+  }
+}
+```
+
+A log of the results to the console looks like this:
+
+![Mutation in JavaScript][mutation]
+
+So, even a very low mutation probability will result in a significant increase in diversity over time.
 
 
 ## Migration: Spatial Models
@@ -224,9 +300,10 @@ function homozygous_genotype_from(parent1, parent2) {
 
 The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
-```javascript
-// TODO: embed simulation
-```
+<iframe height="265" style="width: 100%;" scrolling="no" title="Migration Model" src="//codepen.io/SolangeUG/embed/preview/axbYVm/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/SolangeUG/pen/axbYVm/'>Migration Model</a> by Solange Gasengayire Umuhire
+  (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## Epidemics: The Spread of Infectious Diseases
 
@@ -240,9 +317,10 @@ Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] mode
 
 These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
-```javascript
-// TODO: embed simulation
-```
+<iframe height="265" style="width: 100%;" scrolling="no" title="Epidemics Model" src="//codepen.io/SolangeUG/embed/preview/zXYWJo/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/SolangeUG/pen/zXYWJo/'>Epidemics Model</a> by Solange Gasengayire Umuhire
+  (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
@@ -255,3 +333,4 @@ Finally, in implementing recovery, we discover under which conditions an infecti
 [5]: https://d3js.org/
 [6]: https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model
 [7]: https://github.com/SolangeUG/nature-in-code/tree/master/04-epidemics-model
+[mutation]: mutation.png "Mutation in JavaScript"
