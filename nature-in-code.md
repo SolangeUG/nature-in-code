@@ -20,7 +20,7 @@ It relies on the following simplifying assumptions:
 - sexual reproduction happens randomly
 - and none of the four forces above is in action
 
-Let's consider a basic model of a gene declined into two alleles a<sub>1</sub> and a<sub>2</sub>. A **gene** is defined as <cite>the basic physical and functional unit of heredity</cite>.[<sup>2</sup>][3] Every gene exists in multiple versions, called **alleles**, and these versions are the ones that make us unique.
+Let's consider a basic model of a **gene** declined into two **alleles** a<sub>1</sub> and a<sub>2</sub>. A **gene** is defined as <cite>the basic physical and functional unit of heredity</cite>.[<sup>2</sup>][3] Every gene exists in multiple versions, called **alleles**, and these versions are the ones that make us unique.
 
 For example, the human eye colour is predominantly determined by two genes, `OCA2` and `HERC2`. This last gene comes in two versions, the `C` and the `T` alleles. The combination of those two alleles is what will (mostly) determine an individual's eye colour. A person with two copies of the `C` allele will likely have blue eyes (72% probability). One with two copies of the `T` allele will likely have brown eyes (85% probability). And one with both alleles will have brown eyes with a 56% probability.
 
