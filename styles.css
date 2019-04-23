@@ -1,25 +1,31 @@
 body {
-    margin: 2rem;
-    font-family: Kalam, sans-serif;
+    /*margin: 2rem;*/
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: rgb(85, 85, 85);
 }
 
 .nature-in-code {
-    margin: 2rem;
+    /*margin: 2rem;*/
 }
 
 .legend {
     margin-bottom: 1rem;
+    display: flex;
+    width: 600px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .box {
     display: inline-block;
-    margin-left: 0.1rem;
-    min-width: 4rem;
+    margin-left: 0.4rem;
+    min-width: 0.5rem;
     min-height: 0.5rem;
 }
 
 .a1a1 {
-    background: #F4F6F6;
+    background: #FEF4D4;
 }
 
 .a1a2 {

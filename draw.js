@@ -8,7 +8,7 @@ function draw_grid(data,colors) {
   const height = 600;
   const grid_length = data.length;
 
-  let svg = d3.select('main')
+  let svg = d3.select('section')
     .append('svg')
     .attr('width', width)
     .attr('height', height);
