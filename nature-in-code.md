@@ -144,7 +144,7 @@ function run_generations() {
 
 A log of the results to the console looks like this:
 
-<img src="https://github.com/SolangeUG/nature-in-code/blob/master/02-mutation-model/mutation.png" width="400" height="600" alt="Migration model results"/>
+<img src="https://github.com/SolangeUG/nature-in-code/blob/master/02-mutation-model/mutation.png" width="400" height="600" alt="Migration model results" style="border: 1px solid #C4CBD1;"/>
 
 So, even a very low mutation probability will result in a significant increase in diversity over time.
 
