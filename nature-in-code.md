@@ -300,9 +300,8 @@ function homozygous_genotype_from(parent1, parent2) {
 
 The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
-<iframe height="800" style="width: 100%;" scrolling="no" title="Migration Model" src="//codepen.io/SolangeUG/embed/preview/axbYVm/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/SolangeUG/pen/axbYVm/'>Migration Model</a> by Solange Gasengayire Umuhire
-  (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe style="height: 650px; width: 620px; border: 1px solid #C4CBD1;" scrolling="no" title="Migration Model"
+        src="https://github.com/SolangeUG/nature-in-code/blob/master/03-migration-model/index.html">
 </iframe>
 
 ## Epidemics: The Spread of Infectious Diseases
@@ -317,9 +316,8 @@ Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] mode
 
 These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
-<iframe height="860" style="width: 100%;" scrolling="no" title="Epidemics Model" src="//codepen.io/SolangeUG/embed/preview/zXYWJo/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/SolangeUG/pen/zXYWJo/'>Epidemics Model</a> by Solange Gasengayire Umuhire
-  (<a href='https://codepen.io/SolangeUG'>@SolangeUG</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe style="height: 740px; width: 620px; border: 1px solid #C4CBD1;" scrolling="no" title="Epidemics Model"
+        src="https://github.com/SolangeUG/nature-in-code/blob/master/04-epidemics-model/index.html">
 </iframe>
 
 Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
