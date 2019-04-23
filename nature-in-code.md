@@ -320,6 +320,7 @@ These three stages of evolution can be implemented in [code][7] following the sa
         src="https://github.com/SolangeUG/nature-in-code/blob/master/04-epidemics-model/index.html">
 </iframe>
 
+
 Finally, in implementing recovery, we discover under which conditions an infectious disease can be slowed down and eventually stopped.
 
 
