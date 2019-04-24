@@ -301,7 +301,7 @@ function homozygous_genotype_from(parent1, parent2) {
 The complete code for generating the **migration** spatial model and running a simulation over a 100 generations for example can be found [here][4]. And, with the help of [D3 visualisation library][5], we can generate a visualisation of how this model will evolve over time.
 
 <iframe style="height: 650px; width: 620px; border: 1px solid #C4CBD1;" scrolling="no" title="Migration Model"
-        src="https://github.com/SolangeUG/nature-in-code/blob/master/03-migration-model/index.html">
+        src="https://solangeug.github.io/migration/">
 </iframe>
 
 ## Epidemics: The Spread of Infectious Diseases
@@ -317,7 +317,7 @@ Those preconditions give way to a [Susceptible-Infected-Recovered (SIR)][6] mode
 These three stages of evolution can be implemented in [code][7] following the same steps as before. And that leads to a simulation that looks like this:
 
 <iframe style="height: 740px; width: 620px; border: 1px solid #C4CBD1;" scrolling="no" title="Epidemics Model"
-        src="https://github.com/SolangeUG/nature-in-code/blob/master/04-epidemics-model/index.html">
+        src="https://solangeug.github.io/epidemics/">
 </iframe>
 
 
